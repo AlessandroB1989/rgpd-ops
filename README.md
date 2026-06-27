@@ -35,39 +35,56 @@ La plupart des gens collent la conformité *après* avoir construit — et la do
 ## Contenu
 
 ```
-rgpd-ops/skill/
-├── SKILL.md                          # Entrée — activation, persona, routage
-├── tasks/
-│   ├── interview.md                  # Défaut : interroge puis garde le build
-│   ├── audit.md                      # Trace un flux existant, classe les écarts
-│   └── document.md                   # Génère la doc pour le DPO
-├── frameworks/
-│   ├── principes-rgpd.md             # Tronc commun (flux de décision, deux voies)
-│   ├── rgpd.md                       # RGPD : bases légales, Art. 9, droits, transferts, AIPD
-│   ├── cnil-france.md                # CNIL, souveraineté (CLOUD Act/SecNumCloud), cookies, DPO
-│   ├── donnees-sante-hds.md          # Santé : certification HDS, pattern SaaS santé
-│   ├── matrice-sous-traitants.md     # Lookup par outil FR/UE (DPA, transfert, HDS, souveraineté)
-│   └── avertissement.md              # Le cadrage non négociable
-├── templates/
-│   ├── registre-traitements.md       # Registre Art. 30
-│   ├── cartographie-flux.md          # Où va la donnée + qui la touche
-│   └── checklist-sous-traitant-dpa.md
-└── checklists/
-    └── tripwires-rgpd.md             # Garde-fous pré-build — STOP si l'un saute
+rgpd-ops/
+├── bin/rgpd-ops.js                   # Installeur npx (install / update / uninstall / where)
+├── package.json
+└── skill/                            # La charge utile du skill Claude Code
+    ├── SKILL.md                      # Entrée — activation, persona, routage
+    ├── tasks/
+    │   ├── interview.md              # Défaut : interroge puis garde le build
+    │   ├── audit.md                  # Trace un flux existant, classe les écarts
+    │   └── document.md               # Génère la doc pour le DPO
+    ├── frameworks/
+    │   ├── principes-rgpd.md         # Tronc commun (flux de décision, deux voies)
+    │   ├── rgpd.md                   # RGPD : bases légales, Art. 9, droits, transferts, AIPD
+    │   ├── cnil-france.md            # CNIL, souveraineté (CLOUD Act/SecNumCloud), cookies, DPO
+    │   ├── donnees-sante-hds.md      # Santé : certification HDS, pattern SaaS santé
+    │   ├── matrice-sous-traitants.md # Lookup par outil FR/UE (DPA, transfert, HDS, souveraineté)
+    │   └── avertissement.md          # Le cadrage non négociable
+    ├── templates/
+    │   ├── registre-traitements.md   # Registre Art. 30
+    │   ├── cartographie-flux.md      # Où va la donnée + qui la touche
+    │   └── checklist-sous-traitant-dpa.md
+    └── checklists/
+        └── tripwires-rgpd.md         # Garde-fous pré-build — STOP si l'un saute
 ```
 
 ---
 
 ## Installation
 
-Copier le **contenu de `skill/`** dans `~/.claude/skills/rgpd-ops/` (de sorte que `SKILL.md` soit à la racine de ce dossier) :
+**Via npx (recommandé) :**
+
+```bash
+npx rgpd-ops install            # installe dans ~/.claude/skills/rgpd-ops/
+npx rgpd-ops install --project  # installe dans ./.claude/ du projet courant
+npx rgpd-ops install --with-commands   # écrit aussi les stubs /rgpd-ops, -audit, -document
+```
+
+Autres commandes : `npx rgpd-ops update` (écrase), `uninstall`, `where`, `--help`.
+
+> Tant que le paquet n'est pas publié sur npm, exécute l'installeur depuis le repo cloné :
+> ```bash
+> git clone https://github.com/AlessandroB1989/rgpd-ops.git
+> node rgpd-ops/bin/rgpd-ops.js install
+> ```
+
+**Manuel :** copier le **contenu de `skill/`** dans `~/.claude/skills/rgpd-ops/` (de sorte que `SKILL.md` soit à la racine de ce dossier) :
 
 ```bash
 mkdir -p ~/.claude/skills/rgpd-ops
 cp -R rgpd-ops/skill/* ~/.claude/skills/rgpd-ops/
 ```
-
-Pour l'installer au niveau d'un **projet** : copier dans `./.claude/skills/rgpd-ops/` à la racine du projet.
 
 ---
 

@@ -1,0 +1,48 @@
+{
+  "name": "rgpd-ops",
+  "version": "0.1.0",
+  "description": "Garde-fou RGPD/CNIL/HDS piloté par interview pour Claude Code, calibré France et UE. Conçoit sites, formulaires, automatisations et SaaS conformes par défaut : les données personnelles ne transitent que via des sous-traitants couverts (DPA Art. 28 + transfert valide), l'IA reste hors du chemin des données sensibles, hébergeur HDS pour la santé. Pas un conseil juridique ; ne rend pas un abonnement Claude grand public apte à traiter du perso/santé.",
+  "keywords": [
+    "claude-code",
+    "claude",
+    "skill",
+    "rgpd",
+    "gdpr",
+    "cnil",
+    "hds",
+    "dpa",
+    "donnees-personnelles",
+    "donnees-de-sante",
+    "conformite",
+    "compliance",
+    "souverainete",
+    "secnumcloud",
+    "guardrail"
+  ],
+  "homepage": "https://github.com/AlessandroB1989/rgpd-ops#readme",
+  "bugs": {
+    "url": "https://github.com/AlessandroB1989/rgpd-ops/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlessandroB1989/rgpd-ops.git"
+  },
+  "license": "MIT",
+  "author": "Alexandre Bruneau — BAAIR Solutions",
+  "type": "commonjs",
+  "bin": {
+    "rgpd-ops": "bin/rgpd-ops.js"
+  },
+  "files": [
+    "bin/",
+    "skill/",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=14"
+  },
+  "scripts": {
+    "test": "node bin/rgpd-ops.js --version && echo 'OK'"
+  }
+}
